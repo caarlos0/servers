@@ -1,0 +1,12 @@
+[Unit]
+Description=Redis-Exporter
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/redis_exporter
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

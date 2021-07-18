@@ -19,3 +19,27 @@
   ansible.builtin.systemd:
     state: restarted
     name: redis
+
+- name: download exporter
+  register: exporter_dowload
+  ansible.builtin.unarchive:
+    src: https://github.com/oliver006/redis_exporter/releases/download/v1.24.0/redis_exporter-v1.24.0.linux-amd64.tar.gz
+    dest: /tmp/
+    remote_src: yes
+- name: install exporter
+  when: exporter_dowload.changed
+  register: exporter_install
+  copy:
+    src: /tmp/redis_exporter-v1.24.0.linux-amd64/redis_exporter
+    dest: /usr/local/bin/redis_exporter
+    mode: 0755
+- name: create systemd unit
+  register: exporter_svc
+  copy:
+    src: files/redis-exporter.service
+    dest: /etc/systemd/system/redis-exporter.service
+- name: start service
+  when: exporter_install.changed or exporter_svc.changed
+  ansible.builtin.systemd:
+    state: restarted
+    name: redis-exporter
