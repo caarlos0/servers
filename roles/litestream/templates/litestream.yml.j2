@@ -1,0 +1,8 @@
+access-key-id:     "{{ spaces_access_key }}"
+secret-access-key: "{{ spaces_secret_key }}"
+
+dbs:
+  - path: /root/luckystar.db
+    replicas:
+      - url: s3://becker.nyc3.digitaloceanspaces.com/backups/luckystar/
+        sync-interval: 5s

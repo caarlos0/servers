@@ -1,0 +1,2 @@
+#!/bin/sh
+ansible-playbook -i inventory.ini -e @secrets.enc --ask-vault-pass main.yaml

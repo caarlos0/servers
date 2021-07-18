@@ -1,0 +1,14 @@
+[Unit]
+Description=Luckystar
+After=network.target
+
+[Service]
+Environment=GITHUB_TOKEN={{ github_token }}
+Type=simple
+User=root
+WorkingDirectory=/root/
+ExecStart=/usr/local/bin/luckystar
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

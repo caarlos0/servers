@@ -1,0 +1,14 @@
+- name: install
+  get_url: url=https://caddyserver.com/api/download?os=linux&arch=amd64 dest=/usr/local/bin/caddy mode=a+x
+- name: create systemd unit
+  copy:
+    src: files/caddy.service
+    dest: /etc/systemd/system/caddy.service
+- name: caddyfile
+  copy:
+    src: files/Caddyfile
+    dest: /etc/Caddyfile
+- name: start service
+  ansible.builtin.systemd:
+    state: started
+    name: caddy

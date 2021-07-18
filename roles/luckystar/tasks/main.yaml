@@ -1,0 +1,13 @@
+- name: install
+  copy:
+   src: files/luckystar
+   dest: /usr/local/bin/luckystar
+   mode: 0755
+- name: setup systemd service
+  template:
+    src: templates/luckystar.service.j2
+    dest: /etc/systemd/system/luckystar.service
+- name: start service
+  systemd:
+    name: luckystar
+    state: restarted

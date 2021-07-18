@@ -1,0 +1,11 @@
+- name: install
+  apt:
+    deb: https://github.com/benbjohnson/litestream/releases/download/v0.3.5/litestream-v0.3.5-linux-amd64.deb
+- name: config
+  template:
+    src: templates/litestream.yml.j2
+    dest: /etc/litestream.yml
+- name: restart service
+  ansible.builtin.systemd:
+    state: restarted
+    name: litestream

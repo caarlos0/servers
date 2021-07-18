@@ -1,0 +1,8 @@
+luckystar.carlosbecker.dev {
+  encode gzip
+
+  reverse_proxy  0.0.0.0:3000 {
+    health_path     /health
+    health_interval 10s
+  }
+}
