@@ -1,14 +1,18 @@
 - name: install
+  register: bin
   get_url: url=https://caddyserver.com/api/download?os=linux&arch=amd64 dest=/usr/local/bin/caddy mode=a+x
 - name: create systemd unit
+  register: svc
   copy:
     src: files/caddy.service
     dest: /etc/systemd/system/caddy.service
 - name: caddyfile
+  register: conf
   copy:
     src: files/Caddyfile
     dest: /etc/Caddyfile
 - name: start service
+  when: bin.changed or svc.changed or conf.changed
   ansible.builtin.systemd:
-    state: started
+    state: restarted
     name: caddy

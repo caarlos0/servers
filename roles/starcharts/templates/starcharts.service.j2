@@ -1,13 +1,14 @@
 [Unit]
-Description=Luckystar
+Description=Starcharts
 After=network.target
 
 [Service]
-Environment=GITHUB_TOKEN={{ luckystar_github_token }}
+Environment=PORT=3100
+Environment=GITHUB_TOKEN={{ starcharts_github_token }}
 Type=simple
 User=root
 WorkingDirectory=/root/
-ExecStart=/usr/local/bin/luckystar
+ExecStart=/usr/local/bin/starcharts
 Restart=on-failure
 
 [Install]

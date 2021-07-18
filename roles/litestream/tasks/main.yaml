@@ -1,11 +1,14 @@
 - name: install
+  register: bin
   apt:
     deb: https://github.com/benbjohnson/litestream/releases/download/v0.3.5/litestream-v0.3.5-linux-amd64.deb
 - name: config
+  register: config
   template:
     src: templates/litestream.yml.j2
     dest: /etc/litestream.yml
 - name: restart service
+  when: bin.changed or config.changed
   ansible.builtin.systemd:
     state: restarted
     name: litestream

@@ -1,8 +1,9 @@
 luckystar.carlosbecker.dev {
-  encode gzip
+	encode gzip
+	reverse_proxy 0.0.0.0:3000
+}
 
-  reverse_proxy  0.0.0.0:3000 {
-    health_path     /health
-    health_interval 10s
-  }
+starchart.cc {
+	encode gzip
+	reverse_proxy 0.0.0.0:3100
 }

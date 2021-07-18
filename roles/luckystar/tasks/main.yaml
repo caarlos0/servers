@@ -1,13 +1,16 @@
 - name: install
+  register: bin
   copy:
    src: files/luckystar
    dest: /usr/local/bin/luckystar
    mode: 0755
 - name: setup systemd service
+  register: svc
   template:
     src: templates/luckystar.service.j2
     dest: /etc/systemd/system/luckystar.service
 - name: start service
+  when: bin.changed or svc.changed
   systemd:
     name: luckystar
     state: restarted

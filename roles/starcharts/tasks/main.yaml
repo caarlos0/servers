@@ -1,0 +1,14 @@
+- name: install
+  register: bin
+  apt:
+    deb: https://github.com/caarlos0/starcharts/releases/download/v1.1.0/starcharts_1.1.0_linux_amd64.deb
+- name: setup systemd service
+  register: svc
+  template:
+    src: templates/starcharts.service.j2
+    dest: /etc/systemd/system/starcharts.service
+- name: start service
+  when: bin.changed or svc.changed
+  systemd:
+    name: starcharts
+    state: restarted

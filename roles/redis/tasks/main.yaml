@@ -1,0 +1,21 @@
+- name: install redis
+  register: bin
+  action: >
+    {{ ansible_pkg_mgr }} name=redis state=present update_cache=yes
+- name: maxmemory
+  register: maxmemory
+  ansible.builtin.lineinfile:
+    path: /etc/redis/redis.conf
+    regexp: '^maxmemory '
+    line: maxmemory 512000000
+- name: maxmemory policy
+  register: maxmemory_policy
+  ansible.builtin.lineinfile:
+    path: /etc/redis/redis.conf
+    regexp: '^maxmemory-policy '
+    line: maxmemory-policy allkeys-lfu
+- name: restart service
+  when: bin.changed or maxmemory_policy.changed or maxmemory.changed
+  ansible.builtin.systemd:
+    state: restarted
+    name: redis
