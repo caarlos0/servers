@@ -1,7 +1,7 @@
 - name: install
   register: bin
   apt:
-    deb: https://github.com/caarlos0/starcharts/releases/download/v1.1.0/starcharts_1.1.0_linux_amd64.deb
+    deb: "https://github.com/caarlos0/starcharts/releases/download/v{{ version }}/starcharts_{{ version }}_linux_amd64.deb"
 - name: setup systemd service
   register: svc
   template:
