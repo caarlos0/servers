@@ -12,3 +12,4 @@
   ansible.builtin.systemd:
     state: restarted
     name: litestream
+    daemon_reload: yes

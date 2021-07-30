@@ -14,3 +14,4 @@
   systemd:
     name: luckystar
     state: restarted
+    daemon_reload: yes

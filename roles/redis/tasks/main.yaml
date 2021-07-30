@@ -19,6 +19,7 @@
   ansible.builtin.systemd:
     state: restarted
     name: redis
+    daemon_reload: yes
 
 - name: download exporter
   register: exporter_dowload
@@ -43,3 +44,4 @@
   ansible.builtin.systemd:
     state: restarted
     name: redis-exporter
+    daemon_reload: yes

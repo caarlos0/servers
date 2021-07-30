@@ -16,3 +16,4 @@
   ansible.builtin.systemd:
     state: restarted
     name: caddy
+    daemon_reload: yes
