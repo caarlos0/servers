@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Environment=PORT=3100
-Environment=GITHUB_TOKEN={{ starcharts_github_token }}
+Environment=GITHUB_TOKENS={{ starcharts_github_tokens }}
 Type=simple
 User=root
 WorkingDirectory=/root/
