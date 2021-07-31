@@ -1,9 +1,9 @@
 luckystar.carlosbecker.dev {
 	encode gzip
-	reverse_proxy 0.0.0.0:3000
+	reverse_proxy 127.0.0.1:3000
 }
 
 starchart.cc {
 	encode gzip
-	reverse_proxy 0.0.0.0:3100
+	reverse_proxy 127.0.0.1:3100
 }

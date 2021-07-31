@@ -3,7 +3,7 @@ Description=Starcharts
 After=network.target
 
 [Service]
-Environment=PORT=3100
+Environment=LISTEN=127.0.0.1:3100
 Environment=GITHUB_TOKENS={{ starcharts_github_tokens }}
 Type=simple
 User=root
