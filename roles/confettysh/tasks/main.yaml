@@ -1,0 +1,25 @@
+- name: ensure group
+  ansible.builtin.group:
+    name: confettysh
+    state: present
+- name: ensure user
+  ansible.builtin.user:
+    name: confettysh
+    group: confettysh
+- name: create systemd unit
+  register: svc
+  copy:
+    src: files/confettysh.service
+    dest: /etc/systemd/system/confettysh.service
+- name: binary
+  register: bin
+  copy:
+    src: files/confettysh
+    dest: /usr/local/bin/confettysh
+    mode: 0755
+- name: start service
+  when: bin.changed or svc.changed
+  ansible.builtin.systemd:
+    state: restarted
+    name: confettysh
+    daemon_reload: yes
