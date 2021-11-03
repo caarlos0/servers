@@ -2,8 +2,8 @@
 - hosts: all
   roles:
     - confettysh
-    - redis
-    - luckystar
-    - starcharts
-    - caddy
-    - litestream
+    # - redis
+    # - luckystar
+    # - starcharts
+    # - caddy
+    # - litestream

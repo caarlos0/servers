@@ -6,20 +6,31 @@
   ansible.builtin.user:
     name: confettysh
     group: confettysh
-- name: create systemd unit
+- name: ensure confetti systemd unit
   register: svc
   copy:
     src: files/confettysh.service
     dest: /etc/systemd/system/confettysh.service
+- name: ensure fireworks systemd unit
+  register: svcf
+  copy:
+    src: files/fconfettysh.service
+    dest: /etc/systemd/system/fconfettysh.service
 - name: binary
   register: bin
   copy:
     src: files/confettysh
     dest: /usr/local/bin/confettysh
     mode: 0755
-- name: start service
+- name: start confetti service
   when: bin.changed or svc.changed
   ansible.builtin.systemd:
     state: restarted
     name: confettysh
+    daemon_reload: yes
+- name: start fireworks service
+  when: bin.changed or svcf.changed
+  ansible.builtin.systemd:
+    state: restarted
+    name: fconfettysh
     daemon_reload: yes

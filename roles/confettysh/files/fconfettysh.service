@@ -1,9 +1,9 @@
 [Unit]
-Description=Confettysh Confetti
+Description=Confettysh Fireworks
 After=network.target
 
 [Service]
-Environment=CONFETTYSH_HOST=c.caarlos0.dev CONFETTYSH_PORT=2222  CONFETTYSH_EFFECT=confetti
+Environment=CONFETTYSH_HOST=f.caarlos0.dev CONFETTYSH_PORT=2223 CONFETTYSH_EFFECT=fireworks
 Type=simple
 User=confettysh
 Group=confettysh
