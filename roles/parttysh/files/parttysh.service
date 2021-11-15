@@ -1,0 +1,14 @@
+[Unit]
+Description=Parttysh
+After=network.target
+
+[Service]
+Type=simple
+User=parttysh
+Group=parttysh
+WorkingDirectory=/home/parttysh/
+ExecStart=/usr/local/bin/parttysh -port 2225
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

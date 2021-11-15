@@ -3,7 +3,6 @@ Description=Confettysh Confetti
 After=network.target
 
 [Service]
-Environment=CONFETTYSH_HOST=c.caarlos0.dev CONFETTYSH_PORT=2222  CONFETTYSH_EFFECT=confetti
 Type=simple
 User=confettysh
 Group=confettysh

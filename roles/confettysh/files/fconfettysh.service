@@ -3,12 +3,11 @@ Description=Confettysh Fireworks
 After=network.target
 
 [Service]
-Environment=CONFETTYSH_HOST=f.caarlos0.dev CONFETTYSH_PORT=2223 CONFETTYSH_EFFECT=fireworks
 Type=simple
 User=confettysh
 Group=confettysh
 WorkingDirectory=/home/confettysh/
-ExecStart=/usr/local/bin/confettysh
+ExecStart=/usr/local/bin/confettysh -port 2223 -effect fireworks
 Restart=on-failure
 
 [Install]
