@@ -7,7 +7,7 @@ Type=simple
 User=confettysh
 Group=confettysh
 WorkingDirectory=/home/confettysh/
-ExecStart=/usr/local/bin/confettysh -port 2223 -effect fireworks
+ExecStart=/usr/local/bin/confettysh -port 2223 -metrics-port 9223 -effect fireworks
 Restart=on-failure
 
 [Install]

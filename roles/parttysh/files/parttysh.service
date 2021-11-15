@@ -7,7 +7,7 @@ Type=simple
 User=parttysh
 Group=parttysh
 WorkingDirectory=/home/parttysh/
-ExecStart=/usr/local/bin/parttysh -port 2225
+ExecStart=/usr/local/bin/parttysh -port 2225 -metrics-port 9225
 Restart=on-failure
 
 [Install]

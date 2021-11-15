@@ -7,7 +7,7 @@ Type=simple
 User=confettysh
 Group=confettysh
 WorkingDirectory=/home/confettysh/
-ExecStart=/usr/local/bin/confettysh
+ExecStart=/usr/local/bin/confettysh -metrics-port 9222
 Restart=on-failure
 
 [Install]
