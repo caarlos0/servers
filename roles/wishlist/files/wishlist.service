@@ -7,7 +7,7 @@ Type=simple
 User=wishlist
 Group=wishlist
 WorkingDirectory=/home/wishlist/
-ExecStart=/usr/local/bin/wishlist
+ExecStart=/usr/local/bin/wishlist -config ./config.yaml
 Restart=on-failure
 
 [Install]

@@ -3,8 +3,8 @@
   roles:
     # - gambit
     - wishlist
-    # - parttysh
-    # - confettysh
+    - parttysh
+    - confettysh
     # - redis
     # - luckystar
     # - starcharts

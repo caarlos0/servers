@@ -11,14 +11,18 @@
   copy:
     src: files/wishlist.service
     dest: /etc/systemd/system/wishlist.service
-- name: binary
+- name: install
   register: bin
+  apt:
+    deb: https://github.com/charmbracelet/wishlist/releases/download/v0.1.0/wishlist_0.1.0_linux_amd64.deb
+- name: config
+  register: config
   copy:
-    src: files/wishlist
-    dest: /usr/local/bin/wishlist
+    src: files/config.yaml
+    dest: /home/wishlist/config.yaml
     mode: 0755
 - name: start wishlist service
-  when: bin.changed or svc.changed
+  when: bin.changed or svc.changed or config.changed
   ansible.builtin.systemd:
     state: restarted
     name: wishlist
