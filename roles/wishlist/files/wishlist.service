@@ -1,0 +1,14 @@
+[Unit]
+Description=wishlist
+After=network.target
+
+[Service]
+Type=simple
+User=wishlist
+Group=wishlist
+WorkingDirectory=/home/wishlist/
+ExecStart=/usr/local/bin/wishlist
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

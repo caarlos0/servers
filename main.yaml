@@ -1,7 +1,10 @@
 ---
 - hosts: all
   roles:
-    - confettysh
+    # - gambit
+    - wishlist
+    # - parttysh
+    # - confettysh
     # - redis
     # - luckystar
     # - starcharts

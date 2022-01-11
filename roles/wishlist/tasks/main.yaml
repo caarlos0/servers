@@ -1,0 +1,25 @@
+- name: ensure group
+  ansible.builtin.group:
+    name: wishlist
+    state: present
+- name: ensure user
+  ansible.builtin.user:
+    name: wishlist
+    group: wishlist
+- name: ensure wishlist systemd unit
+  register: svc
+  copy:
+    src: files/wishlist.service
+    dest: /etc/systemd/system/wishlist.service
+- name: binary
+  register: bin
+  copy:
+    src: files/wishlist
+    dest: /usr/local/bin/wishlist
+    mode: 0755
+- name: start wishlist service
+  when: bin.changed or svc.changed
+  ansible.builtin.systemd:
+    state: restarted
+    name: wishlist
+    daemon_reload: yes
