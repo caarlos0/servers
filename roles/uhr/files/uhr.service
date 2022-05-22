@@ -1,0 +1,16 @@
+[Unit]
+Description=Uhr
+After=network.target
+
+[Service]
+Environment=HOST=0.0.0.0
+Environment=PORT=2224
+Type=simple
+User=uhr
+Group=uhr
+WorkingDirectory=/home/uhr/
+ExecStart=/usr/local/bin/wisuhr
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
