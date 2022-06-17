@@ -3,9 +3,23 @@ port: 2220
 endpoints:
 - name: confetti
   address: ssh.caarlos0.dev:2222
+  description: Confetti in your terminal!
+  link:
+    url: https://github.com/charmbracelet/confettysh
 - name: fireworks
   address: ssh.caarlos0.dev:2223
+  description: Fireworks in your terminal!
+  link:
+    url: https://github.com/charmbracelet/confettysh
 - name: uhr
   address: ssh.caarlos0.dev:2224
+  description: Tell the current time in Brazil, in German.
+  set_env:
+    - TZ=America/Sao_Paulo
+  link:
+    url: https://github.com/caarlos0/uhr
 - name: partty-parrot
   address: ssh.caarlos0.dev:2225
+  description: A party parrot, because of course.
+  link:
+    url: https://github.com/caarlos0/parttysh

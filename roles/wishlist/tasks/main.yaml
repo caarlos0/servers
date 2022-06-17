@@ -14,7 +14,7 @@
 - name: install
   register: bin
   apt:
-    deb: https://github.com/charmbracelet/wishlist/releases/download/v0.5.0/wishlist_0.5.0_linux_amd64.deb
+    deb: https://github.com/charmbracelet/wishlist/releases/download/v0.6.0/wishlist_0.6.0_linux_amd64.deb
 - name: config
   register: config
   copy:
